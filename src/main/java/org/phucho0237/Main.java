@@ -7,6 +7,7 @@ import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.instance.InstanceManager;
+import net.minestom.server.instance.LightingChunk;
 import net.minestom.server.instance.block.Block;
 
 public class Main {
@@ -22,6 +23,9 @@ public class Main {
         instanceContainer.setGenerator(unit -> {
             unit.modifier().fillHeight(0, 40, Block.GRASS_BLOCK);
         });
+
+        // Add light
+        instanceContainer.setChunkSupplier(LightingChunk::new);
 
         // Event handler
         GlobalEventHandler globalEventHandler = MinecraftServer.getGlobalEventHandler();
